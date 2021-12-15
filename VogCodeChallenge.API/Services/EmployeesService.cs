@@ -8,7 +8,7 @@ using VogCodeChallenge.API.Interfaces;
 
 namespace VogCodeChallenge.API.Services
 {
-	public class EmployeesService : IEmployees
+	public class EmployeesService : IEmployeesService
 	{
 		public readonly VogDbContext _db;
 
@@ -25,6 +25,11 @@ namespace VogCodeChallenge.API.Services
 		public IList<Employee> ListAll()
 		{
 			return _db.Employees.ToList();
+		}
+
+		public IEnumerable<Employee> GetAllByDepartmentId(int departmentId)
+		{
+			return _db.Employees.Where(x => x.DepartmentId == departmentId).AsEnumerable();
 		}
 	}
 }

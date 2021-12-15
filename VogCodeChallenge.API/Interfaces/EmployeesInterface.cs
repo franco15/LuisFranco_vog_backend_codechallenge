@@ -6,9 +6,10 @@ using VogCodeChallenge.API.Entities;
 
 namespace VogCodeChallenge.API.Interfaces
 {
-	public interface IEmployees
+	public interface IEmployeesService
 	{
 		IEnumerable<Employee> GetAll();
 		IList<Employee> ListAll();
+		IEnumerable<Employee> GetAllByDepartmentId(int departmentId);
 	}
 }
