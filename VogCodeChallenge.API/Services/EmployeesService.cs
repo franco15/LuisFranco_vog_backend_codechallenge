@@ -27,7 +27,7 @@ namespace VogCodeChallenge.API.Services
 			return _db.Employees.ToList();
 		}
 
-		public IEnumerable<Employee> GetAllByDepartmentId(int departmentId)
+		public IEnumerable<Employee> GetAllByDepartmentId(Guid departmentId)
 		{
 			return _db.Employees.Where(x => x.DepartmentId == departmentId).AsEnumerable();
 		}

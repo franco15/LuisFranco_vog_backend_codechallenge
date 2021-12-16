@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace VogCodeChallenge.API.Interfaces
+namespace VogCodeChallenge.API.Entities
 {
-	public interface IDbInit
+	public class Entity
 	{
-		void Initialize();
+		public Guid Id { get; set; }
 	}
 }

@@ -10,6 +10,6 @@ namespace VogCodeChallenge.API.Interfaces
 	{
 		IEnumerable<Employee> GetAll();
 		IList<Employee> ListAll();
-		IEnumerable<Employee> GetAllByDepartmentId(int departmentId);
+		IEnumerable<Employee> GetAllByDepartmentId(Guid departmentId);
 	}
 }

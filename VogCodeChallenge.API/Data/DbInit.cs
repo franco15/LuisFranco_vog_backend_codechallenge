@@ -1,4 +1,4 @@
-﻿using AutoFixture;
+﻿using Bogus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,20 +17,24 @@ namespace VogCodeChallenge.API.Data
 			_db = db;
 		}
 
-		public async Task Initialize()
+		public void Initialize()
 		{
 			if (_db.Departments.Any())
 				return;
-			var fixture = new Fixture();
-			var departments = fixture.Build<Department>()
-				.Without(x => x.Id)
-				.CreateMany(2);
+			var departmentsFaker = new Faker<Department>()
+				.RuleFor(x => x.Name, f => f.Name.Random.Word())
+				.RuleFor(x => x.Address, f => f.Address.Random.Words())
+				.Ignore(x => x.Id);
+			var departments = departmentsFaker.Generate(2);
 			_db.Departments.AddRange(departments);
-			//await _db.SaveChangesAsync();
-			var employees = departments.SelectMany(x => fixture.Build<Employee>()
-				.With(y => y.DepartmentId, x.Id).CreateMany(3));
+			var employeesFaker = new Faker<Employee>()
+				.RuleFor(x => x.FirstName, f => f.Name.FirstName())
+				.RuleFor(x => x.LastName, f => f.Name.LastName())
+				.RuleFor(x => x.JobTitle, f => f.Name.Random.Word())
+				.RuleFor(x => x.Address, f => f.Address.Random.Words());
+			var employees = departments.SelectMany(x => employeesFaker.RuleFor(e => e.DepartmentId, x.Id).Generate(3)).ToList();
 			_db.Employees.AddRange(employees);
-			await _db.SaveChangesAsync();
+			_db.SaveChangesAsync();
 		}
 	}
 }

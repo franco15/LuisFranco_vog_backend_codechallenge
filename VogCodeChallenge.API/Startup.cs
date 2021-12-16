@@ -7,12 +7,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VogCodeChallenge.API.Data;
 using VogCodeChallenge.API.Interfaces;
+using VogCodeChallenge.API.Services;
 
 namespace VogCodeChallenge.API
 {
@@ -37,9 +39,9 @@ namespace VogCodeChallenge.API
 				{
 					o.UseSqlServer(cs);
 				});
-			services.AddControllers();
-			services.AddScoped<DbInit>();
-			services.AddScoped<IEmployeesService>();
+			services.AddControllers().AddNewtonsoftJson(o => o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+			services.AddScoped<IDbInit, DbInit>();
+			services.AddScoped<IEmployeesService, EmployeesService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

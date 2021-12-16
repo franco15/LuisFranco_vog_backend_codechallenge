@@ -31,7 +31,7 @@ namespace VogCodeChallenge.API.Controllers
 		}
 
 		[HttpGet("department/{departmentId}")]
-		public IActionResult GetAllByDepartmentId(int departmentId)
+		public IActionResult GetAllByDepartmentId(Guid departmentId)
 		{
 			var employees = _service.GetAllByDepartmentId(departmentId);
 			return Ok(employees);
