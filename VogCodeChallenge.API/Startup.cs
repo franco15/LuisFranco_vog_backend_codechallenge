@@ -28,7 +28,15 @@ namespace VogCodeChallenge.API
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddDbContext<VogDbContext>(o => o.UseInMemoryDatabase(databaseName: "Vog"));
+			// suppose we are using sql server
+			string cs = Configuration.GetConnectionString("DefaultConnection");
+			if (string.IsNullOrWhiteSpace(cs))
+				services.AddDbContext<VogDbContext>(o => o.UseInMemoryDatabase(databaseName: "Vog"));
+			else
+				services.AddDbContext<VogDbContext>(o =>
+				{
+					o.UseSqlServer(cs);
+				});
 			services.AddControllers();
 			services.AddScoped<DbInit>();
 			services.AddScoped<IEmployeesService>();

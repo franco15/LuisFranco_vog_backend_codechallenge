@@ -19,6 +19,8 @@ namespace VogCodeChallenge.API.Data
 
 		public async Task Initialize()
 		{
+			if (_db.Departments.Any())
+				return;
 			var fixture = new Fixture();
 			var departments = fixture.Build<Department>()
 				.Without(x => x.Id)
