@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VogCodeChallenge.API", "VogCodeChallenge.API\VogCodeChallenge.API.csproj", "{299FF4ED-E31B-4869-99E1-A07404FA9773}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VogCodeChallenge.Question", "VogCodeChallenge.Question\VogCodeChallenge.Question.csproj", "{959CD673-E907-40DB-9307-00FD140B7935}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VogCodeChallenge.Question", "VogCodeChallenge.Question\VogCodeChallenge.Question.csproj", "{959CD673-E907-40DB-9307-00FD140B7935}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VogCodeChallenge.AWSLambda", "VogCodeChallenge.AWSLambda\VogCodeChallenge.AWSLambda.csproj", "{C6475B15-1FA3-4857-9A59-D6DDFC704F18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{959CD673-E907-40DB-9307-00FD140B7935}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{959CD673-E907-40DB-9307-00FD140B7935}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{959CD673-E907-40DB-9307-00FD140B7935}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6475B15-1FA3-4857-9A59-D6DDFC704F18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6475B15-1FA3-4857-9A59-D6DDFC704F18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6475B15-1FA3-4857-9A59-D6DDFC704F18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6475B15-1FA3-4857-9A59-D6DDFC704F18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
